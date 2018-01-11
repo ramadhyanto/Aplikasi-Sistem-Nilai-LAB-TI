@@ -1,0 +1,58 @@
+<div class="list-nilai" ng-controller="NilaiPageCtrl as vm">
+  <div class="row">
+    <div ba-panel ba-panel-title="Search" ba-panel-class="with-scroll">
+      <div class="col-lg-12 col-md-12">
+        <div class="form-group">
+          <label for="input01">Kelas</label>
+          <input type="text" class="form-control" id="input01" placeholder="Masukkan Kelas Untuk Pencarian">
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12">
+        <button type="button" class="btn btn-success btn-with-icon" data-ng-click="vm.searchMahasiswa()">
+          <i class="fa fa-search" aria-hidden="true"></i>Cari Mahasiswa</button>
+      </div>
+    </div>
+
+
+    <div ba-panel ba-panel-title="List Mahasiswa" ba-panel-class="with-scroll">
+      <div class="col-lg-12 col-md-12">
+        <div class="horizontal-scroll">
+          <table class="table sortable">
+            <thead>
+              <tr class="sortable">
+                <th>NPM</th>
+                <th>
+                  <a ng-click="orderByField='nama_mahasiswa'; reverseSort = !reverseSort">
+                    Nama Mahasiswa
+                    <span ng-show="orderByField == 'nama_mahasiswa'">
+                      <span ng-show="!reverseSort"></span>
+                      <span ng-show="reverseSort"></span>
+                    </span>
+                  </a>
+                </th>
+                <th>Kelas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in vm.smartTableData | orderBy:orderByField:reverseSort">
+                <td>{{item.npm_mahasiswa}}</td>
+                <td>{{item.nama_mahasiswa}}</td>
+                <td>{{item.kelas_mahasiswa}}</td>
+              </tr>
+              <tr ng-show="vm.listMahasiswa < 1">
+                <td colspan="6">Data Not Found</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="6" class="text-center">
+                  
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

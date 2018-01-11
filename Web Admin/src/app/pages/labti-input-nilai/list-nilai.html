@@ -1,0 +1,78 @@
+<div class="list-nilai" ng-controller="InputNilaiPageCtrl as vm">
+    <div class="row">
+      <div ba-panel ba-panel-title="Search" ba-panel-class="with-scroll">
+        <div class="col-lg-6 col-md-6">
+          <div class="form-group">
+            <label for="input01">Mata Praktikum</label>
+            <input type="text" class="form-control" ng-model="vm.mata_praktikum" placeholder="Mata Praktikum">
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+              <label for="input01">Kelas</label>
+              <input type="text" class="form-control" ng-model="vm.kelas" placeholder="Kelas">
+            </div>
+          </div>
+        <div class="col-lg-12 col-md-12">
+          <button type="button" class="btn btn-success btn-with-icon" data-ng-click="vm.listPraktikan()">
+            <i class="fa fa-search" aria-hidden="true"></i>Search</button>
+        </div>
+      </div>
+  
+  
+      <div ba-panel ba-panel-title="Nilai Praktikum" ba-panel-class="with-scroll">
+        <div class="col-lg-12 col-md-12">
+          <div class="horizontal-scroll">
+            <table class="table sortable">
+              <thead>
+                <tr class="sortable">
+                  <th>
+                    <a ng-click="orderByField='id'; reverseSort = !reverseSort">
+                      No
+                      <span ng-show="orderByField == 'id'">
+                        <span ng-show="!reverseSort"></span>
+                        <span ng-show="reverseSort"></span>
+                      </span>
+                    </a>
+                  </th>
+                  <th>NPM Mahasiswa</th>
+                  <th>
+                    <a ng-click="orderByField='nama_mahasiswa'; reverseSort = !reverseSort">
+                      Nama Mahasiswa
+                      <span ng-show="orderByField == 'nama_mahasiswa'">
+                        <span ng-show="!reverseSort"></span>
+                        <span ng-show="reverseSort"></span>
+                      </span>
+                    </a>
+                  </th>
+                  <th>Mata Praktikum</th>
+                  <th>Kelas</th>
+                  <th>Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="item in vm.smartTableData | orderBy:orderByField:reverseSort">
+                  <td>{{item.id}}</td>
+                  <td>{{item.npm_mahasiswa}}</td>
+                  <td>{{item.nama_mahasiswa}}</td>
+                  <td>{{item.npm_mahasiswa}}</td>
+                  <td>{{item.kelas_mahasiswa}}</td>
+                  <td><button type="button" class="btn btn-success btn-icon" data-ng-click="vm.detailNilaiPraktikum(item.npm_mahasiswa)"><i class="ion-android-checkmark-circle"></i></button></li></td>
+                </tr>
+                <tr ng-show="vm.listMahasiswa < 1">
+                  <td colspan="6">Data Not Found</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="6" class="text-center">
+                    
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

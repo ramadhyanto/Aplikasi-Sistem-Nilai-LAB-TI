@@ -1,0 +1,8 @@
+{
+  "name": "MobileLabTI",
+  "app_id": "a3107b30",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

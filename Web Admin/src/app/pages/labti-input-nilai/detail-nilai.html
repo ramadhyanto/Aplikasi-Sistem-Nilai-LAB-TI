@@ -1,0 +1,78 @@
+<div class="list-nilai" ng-controller="DetailNilaiPageCtrl as vm">
+  <div class="row">
+    <div class="col-md-12">
+      <div ba-panel ba-panel-title="Nilai Praktikum" ba-panel-class="with-scroll">
+        <div class="add-row-editable-table">
+          <button class="btn btn-primary" ng-click="vm.addNilaiPraktikum()">Add</button>
+        </div>
+        <table class="table table-bordered  table-condensed">
+          <tr>
+            <td>Pertemuan</td>
+            <td>Nilai TP</td>
+            <td>Nilai LP</td>
+            <td>Nilai LA</td>
+            <td>Nilai K</td>
+            <td>Aksi</td>
+          </tr>
+          <tr ng-repeat="item in vm.listNilai" class="editable-row">
+            <td>
+              {{$index+1}}
+            </td>
+            <td>
+              <input type="text" ng-model="item.nilai_tp" style="border:none;" />
+            </td>
+            <td>
+              <input type="text" ng-model="item.nilai_lp" style="border:none;" />
+            </td>
+            <td>
+              <input type="text" ng-model="item.nilai_la" style="border:none;" />
+            </td>
+            <td>
+              <input type="text" ng-model="item.nilai_k" style="border:none;" />
+            </td>
+
+            <td>
+              <div class="buttons" ng-show="!rowform.$visible">
+                <button class="btn btn-primary editable-table-button btn-xs" ng-click="vm.updateNilaiPraktikum(item.id,item.nilai_tp,item.nilai_lp,item.nilai_la,item.nilai_k);open('app/pages/ui/modals/modalTemplates/successModal.html');">Ganti</button>
+                <button class="btn btn-danger editable-table-button btn-xs" ng-click="deleteNilaiPraktikum(item.id)">Delete</button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div ba-panel ba-panel-title="Nilai Ujian" ba-panel-class="with-scroll">
+        <div class="add-row-editable-table">
+          <button class="btn btn-primary" ng-click="vm.addNilaiUjian()">Add</button>
+        </div>
+        <table class="table table-bordered  table-condensed">
+          <tr>
+            <td>Nama</td>
+            <td>Nilai Ujian</td>
+            <td>Nilai Proyek</td>
+            <td>Aksi</td>
+          </tr>
+          <tr ng-repeat="item in vm.listNilai" class="editable-row">
+            <td>{{item.nama_mahasiswa}}</td>
+            <td>
+              <input type="text" ng-model="item.nilai_tp" style="border:none;" />
+            </td>
+            <td>
+              <input type="text" ng-model="item.nilai_lp" style="border:none;" />
+            </td>
+            <td>
+              <div class="buttons" ng-show="!rowform.$visible">
+                <button class="btn btn-primary editable-table-button btn-xs" ng-click="vm.updateNilai(item.id,item.nilai_tp,item.nilai_lp,item.nilai_la,item.nilai_k);open('app/pages/ui/modals/modalTemplates/successModal.html');">Ganti</button>
+                <button class="btn btn-danger editable-table-button btn-xs" ng-click="removeUser(item.id)">Delete</button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
